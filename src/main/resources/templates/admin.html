@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>All users</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Specialization</th>
+        <th>Salary</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="users : ${allUsers}">
+        <td th:hidden="${users.id}"></td>
+        <td th:text="${users.name}"></td>
+        <td th:text="${users.surname}"></td>
+        <td th:text="${users.age}"></td>
+        <td th:text="${users.specialization}"></td>
+        <td th:text="${users.salary}"></td>
+        <td th:hidden="${users.password}"></td>
+        <td>
+            <form th:method="GET" th:action="@{admin/{id}/edit(id=${users.getId()})}" th:object="${user}">
+                <input type="submit" th:value="Update"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/admin/{id}(id=${users.getId()})}" th:object="${user}">
+                <input type="submit" th:value="Delete"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<input th:type="button" th:value="Add" onclick="window.location.href='admin/new'"/>
+<br>
+<input th:type="button" th:value="UserInfo" onclick="window.location.href='/user'"/>
+<br><br>
+<input th:type="button" th:value="logout" onclick="window.location.href='/logout'"/>
+</body>
+</html>

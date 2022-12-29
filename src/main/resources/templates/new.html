@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>addNewUser</title>
+</head>
+<body>
+<h2>User info</h2>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <label th:for="name">Name </label>
+    <input type="text" th:field="*{name}" th:id="name"/>
+    <br>
+    <label th:for="surname">Surname </label>
+    <input type="text" th:field="*{surname}" th:id="surname"/>
+    <br>
+    <label th:for="age">Age </label>
+    <input type="text" th:field="*{age}" th:id="age"/>
+    <br>
+    <label th:for="specialization">Specialization </label>
+    <input type="text" th:field="*{specialization}" th:id="specialization"/>
+    <br>
+    <label th:for="salary">Salary </label>
+    <input type="text" th:field="*{salary}" th:id="salary"/>
+    <br>
+    <label th:for="password">Password </label>
+    <input type="text" th:field="*{password}" th:id="password"/>
+    <br>
+    <td>
+        <label>User<input type="checkbox" name="roles" value="ROLE_USER" checked></label>
+        <label>Admin<input type="checkbox" name="roles" value="ROLE_ADMIN"></label>
+    </td>
+    <br>
+    <input type="submit" th:value="Ok"/>
+</form>
+<br>
+<input th:type="button" th:value="logout" onclick="window.location.href='/logout'"/>
+</body>
+</html>
